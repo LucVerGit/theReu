@@ -1,14 +1,24 @@
 package com.lucasverrier.thereu;
 
 import androidx.appcompat.app.AppCompatActivity;
+import android.app.Application;
+import android.content.Context;
 
-import android.os.Bundle;
+import net.danlew.android.joda.JodaTimeAndroid;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends Application {
+
+
+    private static Context mContext;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+    public void onCreate() {
+        super.onCreate();
+        JodaTimeAndroid.init(this);
+        MainActivity.mContext = getApplicationContext();
+    }
+
+    public static Context getContext(){
+        return mContext;
     }
 }
