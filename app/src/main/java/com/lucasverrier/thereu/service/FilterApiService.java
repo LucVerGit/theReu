@@ -1,5 +1,7 @@
 package com.lucasverrier.thereu.service;
 
+import com.lucasverrier.thereu.model.Meeting;
+
 import java.util.List;
 
 public interface FilterApiService {

@@ -17,8 +17,6 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TimePicker;
 
-import androidx.fragment.app.Fragment;
-
 import com.lucasverrier.thereu.R;
 import com.lucasverrier.thereu.event.AddMeetingEvent;
 import com.lucasverrier.thereu.model.Meeting;
@@ -33,6 +31,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
+import androidx.fragment.app.Fragment;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
@@ -96,7 +95,7 @@ public class InformationFragment extends Fragment {
 
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
-                //Nothing
+
             }
         });
 

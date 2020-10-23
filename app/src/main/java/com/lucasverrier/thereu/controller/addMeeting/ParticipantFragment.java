@@ -1,5 +1,5 @@
 package com.lucasverrier.thereu.controller.addMeeting;
-package com.lucasverrier.thereu.controller.addMeeting;
+
 
 import android.content.Context;
 import android.os.Bundle;
@@ -9,11 +9,6 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 
-import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.DividerItemDecoration;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
 import com.lucasverrier.thereu.R;
 import com.lucasverrier.thereu.event.AddMeetingEvent;
 
@@ -22,9 +17,13 @@ import org.greenrobot.eventbus.EventBus;
 import java.util.ArrayList;
 import java.util.List;
 
+import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.DividerItemDecoration;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import androidx.fragment.app.Fragment;
+
 
 public class ParticipantFragment extends Fragment {
 
@@ -61,8 +60,7 @@ public class ParticipantFragment extends Fragment {
         mParticipantAdapter  = new ParticipantsRecyclerViewAdapter(mParticipantList);
         mRecyclerParticipants.setAdapter(mParticipantAdapter);
 
-        //OnClickListener to add participant to participant resume
-        mAddParticipantButton.setOnClickListener(v -> {
+        mAddParticipantButton.setOnClickListener((View v) -> {
             mParticipantList.add(mParticipantInput.getText().toString());
             mParticipantInput.getText().clear();
             mParticipantListStatic = mParticipantList;

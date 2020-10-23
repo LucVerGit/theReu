@@ -1,5 +1,7 @@
 package com.lucasverrier.thereu.service;
 
+import com.lucasverrier.thereu.model.Meeting;
+
 import java.util.ArrayList;
 import java.util.List;
 

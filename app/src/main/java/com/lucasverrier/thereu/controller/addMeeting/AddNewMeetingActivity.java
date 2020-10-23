@@ -1,15 +1,13 @@
 package com.lucasverrier.thereu.controller.addMeeting;
 import android.os.Bundle;
 
+import com.google.android.material.tabs.TabLayout;
+import com.lucasverrier.thereu.R;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager.widget.ViewPager;
-
-
-import com.google.android.material.tabs.TabLayout;
-
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import com.lucasverrier.R;
 
 public class AddNewMeetingActivity extends AppCompatActivity{
     @BindView(R.id.tabs)
