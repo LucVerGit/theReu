@@ -77,4 +77,73 @@ public class InstrumentedTestFilterDate {
         onView(withText("Next Month")).check(doesNotExist());
     }
 
+
+    @Test
+    public void dateFilterAction_tomorrow(){
+        //Click on filter tab item
+        onView(withId(R.id.action_filter)).perform(click());
+        onView(withId(R.id.card_filter)).check(matches(withEffectiveVisibility(ViewMatchers.Visibility.VISIBLE)));
+
+        //Click on spinner item "Tomorrow"
+        onView(withId(R.id.date_spinner)).perform(click());
+        onData(is(res.getString(R.string.date_spinner_tomorrow))).perform(click());
+        //Check if the correct meeting is displayed
+        onView(withId(R.id.list_meeting_container)).check(withItemCount(1));
+        onView(withText("Tomorrow")).check(matches(isDisplayed()));
+        onView(withText("Today")).check(doesNotExist());
+        onView(withText("Next Week")).check(doesNotExist());
+        onView(withText("Next Month")).check(doesNotExist());
+    }
+
+    @Test
+    public void dateFilterAction_thisWeek() {
+        //Click on filter tab item
+        onView(withId(R.id.action_filter)).perform(click());
+        onView(withId(R.id.card_filter)).check(matches(withEffectiveVisibility(ViewMatchers.Visibility.VISIBLE)));
+
+        //Click on spinner item "This Week"
+        onView(withId(R.id.date_spinner)).perform(click());
+        onData(is(res.getString(R.string.date_spinner_this_week))).perform(click());
+        //Check if the correct meeting is displayed
+        onView(withId(R.id.list_meeting_container)).check(withItemCount(2));
+        onView(withText("Today")).check(matches(isDisplayed()));
+        onView(withText("Tomorrow")).check(matches(isDisplayed()));
+        onView(withText("Next Week")).check(doesNotExist());
+        onView(withText("Next Month")).check(doesNotExist());
+    }
+
+    @Test
+    public void dateFilterAction_nextWeek() {
+        //Click on filter tab item
+        onView(withId(R.id.action_filter)).perform(click());
+        onView(withId(R.id.card_filter)).check(matches(withEffectiveVisibility(ViewMatchers.Visibility.VISIBLE)));
+
+        //Click on spinner item "Next Week"
+        onView(withId(R.id.date_spinner)).perform(click());
+        onData(is(res.getString(R.string.date_spinner_next_week))).perform(click());
+        //Check if the correct meeting is displayed
+        onView(withId(R.id.list_meeting_container)).check(withItemCount(1));
+        onView(withText("Next Week")).check(matches(isDisplayed()));
+        onView(withText("Today")).check(doesNotExist());
+        onView(withText("Tomorrow")).check(doesNotExist());
+        onView(withText("Next Month")).check(doesNotExist());
+    }
+
+    @Test
+    public void dateFilterAction_thisMonth() {
+        //Click on filter tab item
+        onView(withId(R.id.action_filter)).perform(click());
+        onView(withId(R.id.card_filter)).check(matches(withEffectiveVisibility(ViewMatchers.Visibility.VISIBLE)));
+
+        //Click on spinner item "This Month"
+        onView(withId(R.id.date_spinner)).perform(click());
+        onData(is(res.getString(R.string.date_spinner_month))).perform(click());
+        //Check if the correct meeting is displayed
+        onView(withId(R.id.list_meeting_container)).check(withItemCount(3));
+        onView(withText("Today")).check(matches(isDisplayed()));
+        onView(withText("Tomorrow")).check(matches(isDisplayed()));
+        onView(withText("Next Week")).check(matches(isDisplayed()));
+        onView(withText("Next Month")).check(doesNotExist());
+    }
+
 }
