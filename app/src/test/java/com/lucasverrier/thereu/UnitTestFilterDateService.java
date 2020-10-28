@@ -87,5 +87,38 @@ public class UnitTestFilterDateService {
         assertFalse(filteredMeetingList.contains(meetingService.getMeetingList().get(3)));
     }
 
+    @Test
+    public void filterTomorrowWithSuccess(){
+        List<Meeting> filteredMeetingList = new ArrayList<>(meetingService.getMeetingList());
+        List<Meeting> expectedFilteredList = new ArrayList<>();
+        expectedFilteredList.add(meetingService.getMeetingList().get(1));
+        filteredMeetingList = dateFilter(filteredMeetingList, "Demain");
+        assertTrue(filteredMeetingList.containsAll(expectedFilteredList));
+        assertFalse(filteredMeetingList.contains(meetingService.getMeetingList().get(0)));
+        assertFalse(filteredMeetingList.contains(meetingService.getMeetingList().get(2)));
+        assertFalse(filteredMeetingList.contains(meetingService.getMeetingList().get(3)));
+    }
+    @Test
+    public void filterNextWeekWithSuccess(){
+        List<Meeting> filteredMeetingList = new ArrayList<>(meetingService.getMeetingList());
+        List<Meeting> expectedFilteredList = new ArrayList<>();
+        expectedFilteredList.add(meetingService.getMeetingList().get(2));
+        filteredMeetingList = dateFilter(filteredMeetingList, "La semaine prochaine");
+        assertTrue(filteredMeetingList.containsAll(expectedFilteredList));
+        assertFalse(filteredMeetingList.contains(meetingService.getMeetingList().get(0)));
+        assertFalse(filteredMeetingList.contains(meetingService.getMeetingList().get(1)));
+        assertFalse(filteredMeetingList.contains(meetingService.getMeetingList().get(3)));
+    }
+    @Test
+    public void filterThisMonthWithSuccess(){
+        List<Meeting> filteredMeetingList = new ArrayList<>(meetingService.getMeetingList());
+        List<Meeting> expectedFilteredList = new ArrayList<>();
+        expectedFilteredList.add(meetingService.getMeetingList().get(0));
+        expectedFilteredList.add(meetingService.getMeetingList().get(1));
+        expectedFilteredList.add(meetingService.getMeetingList().get(2));
+        filteredMeetingList = dateFilter(filteredMeetingList, "Ce mois-ci");
+        assertTrue(filteredMeetingList.containsAll(expectedFilteredList));
+        assertFalse(filteredMeetingList.contains(meetingService.getMeetingList().get(3)));
+    }
 
 }
